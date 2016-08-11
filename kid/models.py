@@ -14,7 +14,6 @@ class Qingyang(models.Model):
     phone = models.CharField(max_length=255, blank=True, null=True)
     lng = models.CharField(max_length=255, blank=True, null=True)
     lat = models.CharField(max_length=255, blank=True, null=True)
-
     def __str__(self):
         return '%s,%s'%(self.lng,self.lat)
     class Meta:

@@ -26,9 +26,23 @@
 	var markers = [];
 	var pt = null;
 	{% for point in point_list %}
-	   pt = new BMap.Point({{ point }});
-	   markers.push(new BMap.Marker(pt));
+	    pt = new BMap.Point({{ point }});
+        markers.push(new BMap.Marker(pt));
+        var opts = {
+            position : pt, // 指定文本标注所在的地理位置
+            offset : new BMap.Size(10, -10)    //设置文本偏移量
+	        }
+        var label = new BMap.Label("{{point.name}}", opts);  // 创建文本标注对象
+            label.setStyle({
+			 color : "red",
+			 fontSize : "8px",
+			 height : "15px",
+			 lineHeight : "15px",
+			 fontFamily:"微软雅黑"
+		 });
+        map.addOverlay(label);
 	{% endfor %}
+
 {#    pt = new BMap.Point({{ ng }},{{ at }});#}
 {#    markers.push(new BMap.Marker(pt));#}
 	//最简单的用法，生成一个marker数组，然后调用markerClusterer类即可。

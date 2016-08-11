@@ -20,5 +20,4 @@ from kid import views as map_views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', map_views.map, name='baidu'),
-
 ]
